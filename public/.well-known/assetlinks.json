@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.playlinko.app",
+      "sha256_cert_fingerprints": [
+        "B248F18E1B3C80590E3671F58CE733DB3D5A602E8B7E23F96BAD62C8CE95D7EF"
+      ]
+    }
+  }
+]

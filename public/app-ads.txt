@@ -1,0 +1,4 @@
+# app-ads.txt for PlayLinko
+# Add your ad network entries here
+# Example format:
+# google.com, pub-8302113663212183, DIRECT, f08c47fec0942fa0
