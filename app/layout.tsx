@@ -1,31 +1,43 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+config.autoAddCss = false;
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "PlayLinko - The Ultimate Puzzle Challenge",
-  description: "Experience the thrill of Plinko like never before. Download PlayLinko now on iOS and Android!",
-  keywords: ["plinko", "game", "mobile game", "playlinko", "arcade"],
-  authors: [{ name: "PlayLinko Team" }],
+  title: "2248 Linko: Number Puzzle Game",
+  description:
+    "Merge numbers in Warm Light Mode and reach infinity — from 2248 to Millions, Billions, and beyond! Download 2248 Linko on iOS and Android.",
+  keywords: [
+    "2248",
+    "linko",
+    "number puzzle",
+    "merge game",
+    "mobile game",
+    "2248 linko",
+    "number merge",
+    "puzzle game",
+  ],
+  authors: [{ name: "2248 Linko Team" }],
   openGraph: {
-    title: "PlayLinko - The Ultimate Puzzle Challenge",
-    description: "Experience the thrill of Plinko like never before. Download PlayLinko now on iOS and Android!",
+    title: "2248 Linko: Number Puzzle Game",
+    description:
+      "Merge numbers in Warm Light Mode and reach infinity — from 2248 to Millions, Billions, and beyond!",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlayLinko - The Ultimate Puzzle Challenge",
-    description: "Experience the thrill of Plinko like never before. Download PlayLinko now on iOS and Android!",
+    title: "2248 Linko: Number Puzzle Game",
+    description:
+      "Merge numbers in Warm Light Mode and reach infinity — from 2248 to Millions, Billions, and beyond!",
   },
 };
 
@@ -36,11 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );
 }

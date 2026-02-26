@@ -3,80 +3,112 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faClock,
+  faShareNodes,
+  faArrowLeft,
+  faHeadset,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Support() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission (placeholder for now)
     alert("Thank you for contacting us! We'll get back to you soon.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const inputClass =
+    "w-full px-4 py-3 bg-white/60 border border-amber-200 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-200 text-amber-900 placeholder:text-amber-400 transition";
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="w-full px-6 py-4 flex justify-between items-center border-b border-neon-blue/10">
-        <Link href="/" className="text-2xl font-bold text-neon-blue neon-glow-blue hover:scale-105 transition-transform">
-          PlayLinko
+    <div
+      className="min-h-screen flex flex-col"
+      style={{
+        background:
+          "linear-gradient(160deg, #FFFBEB 0%, #FEF3C7 60%, #FDE68A 100%)",
+      }}
+    >
+      {/* ── Navigation ── */}
+      <nav className="glass-nav w-full px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <Link
+          href="/"
+          className="flex items-center gap-2 hover:scale-105 transition-transform"
+        >
+          <span className="text-2xl font-black text-amber-500">2248</span>
+          <span className="text-xl font-bold text-amber-800">Linko</span>
         </Link>
         <div className="flex gap-6">
-          <Link 
-            href="/privacy" 
-            className="text-foreground/70 hover:text-neon-blue transition-colors"
+          <Link
+            href="/privacy"
+            className="text-amber-700/70 hover:text-amber-900 font-medium transition-colors"
           >
             Privacy
           </Link>
-          <Link 
-            href="/support" 
-            className="text-electric-purple font-semibold"
+          <Link
+            href="/support"
+            className="text-amber-700 font-semibold border-b-2 border-amber-500 pb-0.5"
           >
             Support
           </Link>
         </div>
       </nav>
 
-      {/* Content */}
-      <main className="max-w-6xl mx-auto px-6 py-16">
+      {/* ── Content ── */}
+      <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-14 md:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          className="text-center mb-14"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center">
-            <span className="text-neon-blue neon-glow-blue">Support</span>{" "}
-            <span className="text-electric-purple neon-glow-purple">Center</span>
+          <div className="flex justify-center mb-4">
+            <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center">
+              <FontAwesomeIcon icon={faHeadset} className="text-2xl text-amber-600" />
+            </div>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-black text-amber-900 mb-4">
+            Support <span className="text-amber-600">Center</span>
           </h1>
-          <p className="text-center text-foreground/80 text-lg mb-16 max-w-2xl mx-auto">
-            Need help? We're here for you! Reach out to us with any questions or issues.
+          <p className="text-amber-800/70 text-lg max-w-2xl mx-auto">
+            Need help? We&rsquo;re here for you! Reach out with any questions or
+            issues.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-neon-blue/5 border border-neon-blue/20 rounded-2xl p-8"
+            className="glass-card p-8"
           >
-            <h2 className="text-2xl font-semibold text-neon-blue mb-6">Contact Us</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <h2 className="text-2xl font-bold text-amber-800 mb-6">
+              Contact Us
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="name" className="block text-foreground/80 mb-2 font-medium">
+                <label
+                  htmlFor="name"
+                  className="block text-amber-800/80 mb-1.5 font-medium text-sm"
+                >
                   Name
                 </label>
                 <input
@@ -86,13 +118,16 @@ export default function Support() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-neon-blue/30 rounded-lg focus:outline-none focus:border-neon-blue text-foreground"
+                  className={inputClass}
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-foreground/80 mb-2 font-medium">
+                <label
+                  htmlFor="email"
+                  className="block text-amber-800/80 mb-1.5 font-medium text-sm"
+                >
                   Email
                 </label>
                 <input
@@ -102,13 +137,16 @@ export default function Support() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-neon-blue/30 rounded-lg focus:outline-none focus:border-neon-blue text-foreground"
+                  className={inputClass}
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-foreground/80 mb-2 font-medium">
+                <label
+                  htmlFor="subject"
+                  className="block text-amber-800/80 mb-1.5 font-medium text-sm"
+                >
                   Subject
                 </label>
                 <select
@@ -117,19 +155,22 @@ export default function Support() {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-background border border-neon-blue/30 rounded-lg focus:outline-none focus:border-neon-blue text-foreground"
+                  className={inputClass}
                 >
                   <option value="">Select a subject</option>
                   <option value="technical">Technical Issue</option>
-                  <option value="account">Account & Billing</option>
+                  <option value="account">Account &amp; Billing</option>
                   <option value="gameplay">Gameplay Question</option>
-                  <option value="feedback">Feedback & Suggestions</option>
+                  <option value="feedback">Feedback &amp; Suggestions</option>
                   <option value="other">Other</option>
                 </select>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-foreground/80 mb-2 font-medium">
+                <label
+                  htmlFor="message"
+                  className="block text-amber-800/80 mb-1.5 font-medium text-sm"
+                >
                   Message
                 </label>
                 <textarea
@@ -139,21 +180,21 @@ export default function Support() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-background border border-neon-blue/30 rounded-lg focus:outline-none focus:border-neon-blue text-foreground resize-none"
+                  className={inputClass + " resize-none"}
                   placeholder="Tell us how we can help..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-neon-blue to-electric-purple rounded-lg font-semibold text-background hover:scale-105 transition-transform duration-300 neon-border-blue"
+                className="glass-button-primary w-full py-4 px-8 font-semibold text-base hover:scale-[1.02] active:scale-100 transition-transform duration-300 touch-manipulation"
               >
                 Send Message
               </button>
             </form>
           </motion.div>
 
-          {/* FAQ and Contact Info */}
+          {/* Right column */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -161,99 +202,99 @@ export default function Support() {
             className="space-y-8"
           >
             {/* Quick Contact */}
-            <div className="bg-electric-purple/5 border border-electric-purple/20 rounded-2xl p-8">
-              <h2 className="text-2xl font-semibold text-electric-purple mb-6">Quick Contact</h2>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-electric-purple/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-electric-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+            <div className="glass-card p-8">
+              <h2 className="text-2xl font-bold text-amber-800 mb-6">
+                Quick Contact
+              </h2>
+              <div className="space-y-5">
+                {[
+                  {
+                    icon: faEnvelope,
+                    title: "Email Support",
+                    body: "support@playlinko.com",
+                  },
+                  {
+                    icon: faClock,
+                    title: "Response Time",
+                    body: "We typically respond within 24 hours",
+                  },
+                  {
+                    icon: faShareNodes,
+                    title: "Social Media",
+                    body: "@playlinko on Twitter & Instagram",
+                  },
+                ].map(({ icon, title, body }) => (
+                  <div key={title} className="flex items-start gap-4">
+                    <div className="w-11 h-11 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
+                      <FontAwesomeIcon
+                        icon={icon}
+                        className="text-amber-600 text-base"
+                        aria-hidden
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-amber-900 mb-0.5">
+                        {title}
+                      </h3>
+                      <p className="text-amber-800/70 text-sm">{body}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Email Support</h3>
-                    <p className="text-foreground/70">support@playlinko.com</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-neon-blue/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-neon-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Response Time</h3>
-                    <p className="text-foreground/70">We typically respond within 24 hours</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-electric-purple/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-electric-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Social Media</h3>
-                    <p className="text-foreground/70">@playlinko on Twitter & Instagram</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* FAQ */}
-            <div className="bg-neon-blue/5 border border-neon-blue/20 rounded-2xl p-8">
-              <h2 className="text-2xl font-semibold text-neon-blue mb-6">Common Questions</h2>
+            <div className="glass-card p-8">
+              <h2 className="text-2xl font-bold text-amber-800 mb-6">
+                Common Questions
+              </h2>
               <div className="space-y-6">
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">How do I reset my password?</h3>
-                  <p className="text-foreground/70 text-sm">
-                    Go to Settings → Account → Reset Password within the app, or contact support for assistance.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Can I play offline?</h3>
-                  <p className="text-foreground/70 text-sm">
-                    Yes! PlayLinko offers offline gameplay. However, leaderboard features require an internet connection.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">How do in-app purchases work?</h3>
-                  <p className="text-foreground/70 text-sm">
-                    All purchases are processed securely through the App Store or Google Play. Receipts are sent to your email.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="font-semibold text-foreground mb-2">Can I transfer progress between devices?</h3>
-                  <p className="text-foreground/70 text-sm">
-                    Yes! Sign in with your account on any device to sync your progress automatically.
-                  </p>
-                </div>
+                {[
+                  {
+                    q: "How do I reset my password?",
+                    a: "Go to Settings → Account → Reset Password within the app, or contact support for assistance.",
+                  },
+                  {
+                    q: "Can I play offline?",
+                    a: "Yes! 2248 Linko offers offline gameplay. However, leaderboard features require an internet connection.",
+                  },
+                  {
+                    q: "How do in-app purchases work?",
+                    a: "All purchases are processed securely through the App Store or Google Play. Receipts are sent to your email.",
+                  },
+                  {
+                    q: "Can I transfer progress between devices?",
+                    a: "Yes! Sign in with your account on any device to sync your progress automatically.",
+                  },
+                ].map(({ q, a }) => (
+                  <div key={q}>
+                    <h3 className="font-semibold text-amber-900 mb-1.5">
+                      {q}
+                    </h3>
+                    <p className="text-amber-800/70 text-sm leading-relaxed">
+                      {a}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-neon-blue/10">
-          <Link 
-            href="/" 
-            className="inline-flex items-center gap-2 text-neon-blue hover:text-electric-purple transition-colors"
+        <div className="pt-8 border-t border-amber-200/50">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-amber-700 hover:text-amber-900 font-medium transition-colors"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
+            <FontAwesomeIcon icon={faArrowLeft} className="text-sm" />
             Back to Home
           </Link>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full px-6 py-8 border-t border-neon-blue/10 text-center text-foreground/60 text-sm">
-        <p>&copy; 2026 PlayLinko. All rights reserved.</p>
+      {/* ── Footer ── */}
+      <footer className="w-full px-6 py-8 border-t border-amber-200/50 text-center text-amber-700/55 text-sm">
+        <p>&copy; 2026 2248 Linko. All rights reserved.</p>
       </footer>
     </div>
   );
