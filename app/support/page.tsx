@@ -10,6 +10,7 @@ import {
   faShareNodes,
   faArrowLeft,
   faHeadset,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Support() {
@@ -266,6 +267,10 @@ export default function Support() {
                     q: "Can I transfer progress between devices?",
                     a: "Yes! Sign in with your account on any device to sync your progress automatically.",
                   },
+                  {
+                    q: "How do I delete my account?",
+                    a: 'Email privacy@playlinko.com with the subject "Account Deletion Request" and your in-game username. We will permanently delete your account and all associated data within 30 days.',
+                  },
                 ].map(({ q, a }) => (
                   <div key={q}>
                     <h3 className="font-semibold text-amber-900 mb-1.5">
@@ -280,6 +285,51 @@ export default function Support() {
             </div>
           </motion.div>
         </div>
+
+        {/* ── Account Deletion ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="glass-card p-8 mb-10 border-2 border-amber-300/60"
+        >
+          <div className="flex items-center gap-4 mb-5">
+            <div className="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center shrink-0">
+              <FontAwesomeIcon icon={faTrashCan} className="text-red-500 text-lg" />
+            </div>
+            <h2 className="text-2xl font-bold text-amber-900">
+              Delete My Account
+            </h2>
+          </div>
+          <p className="text-amber-800/75 leading-relaxed mb-4">
+            You have the right to request permanent deletion of your account and
+            all associated data at any time. To submit a deletion request:
+          </p>
+          <ol className="list-decimal list-inside text-amber-900/75 leading-relaxed space-y-2 ml-2 mb-5">
+            <li>
+              Email{" "}
+              <a
+                href="mailto:privacy@playlinko.com"
+                className="text-amber-600 hover:text-amber-800 underline underline-offset-2 font-medium transition-colors"
+              >
+                privacy@playlinko.com
+              </a>
+            </li>
+            <li>
+              Use the subject line{" "}
+              <strong className="text-amber-900 font-semibold">
+                &ldquo;Account Deletion Request&rdquo;
+              </strong>
+            </li>
+            <li>Include your in-game username in the message body</li>
+          </ol>
+          <p className="text-amber-800/70 text-sm">
+            We will permanently delete your account and all associated gameplay
+            data within <strong className="text-amber-900">30 days</strong> of
+            receiving your request. You will receive a confirmation email once
+            the deletion is complete.
+          </p>
+        </motion.div>
 
         <div className="pt-8 border-t border-amber-200/50">
           <Link

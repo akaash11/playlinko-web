@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
             <strong className="text-amber-800 font-semibold">
               Last Updated:
             </strong>{" "}
-            February 11, 2026
+            February 28, 2026
           </p>
         </div>
 
@@ -312,8 +312,20 @@ export default function PrivacyPolicy() {
                 <strong className="text-amber-900 font-semibold">
                   Right to Deletion:
                 </strong>{" "}
-                You may request that we delete your account and associated
-                gameplay data.
+                You may request that we delete your account and all associated
+                gameplay data. To do so, email{" "}
+                <a
+                  href="mailto:privacy@playlinko.com"
+                  className="text-amber-600 hover:text-amber-800 underline underline-offset-2 transition-colors"
+                >
+                  privacy@playlinko.com
+                </a>{" "}
+                with the subject line{" "}
+                <strong className="text-amber-900 font-medium">
+                  &ldquo;Account Deletion Request&rdquo;
+                </strong>{" "}
+                and include your in-game username. We will process your request
+                within 30 days.
               </li>
               <li>
                 <strong className="text-amber-900 font-semibold">
