@@ -2,11 +2,30 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faShieldHalved } from "@fortawesome/free-solid-svg-icons";
+import { siteConfig } from "../config/site";
 
 export const metadata: Metadata = {
-  title: "2248 Linko Privacy Policy",
+  title: "Privacy Policy",
   description:
-    "2248 Linko Privacy Policy — Learn how we collect, use, and protect your data.",
+    "2248 Linko Privacy Policy — Learn how we collect, use, and protect your data in compliance with GDPR, CCPA, and COPPA.",
+  keywords: [
+    "2248 Linko privacy policy",
+    "playlinko privacy",
+    "mobile game privacy",
+    "GDPR compliance",
+    "CCPA compliance",
+    "data protection",
+  ],
+  alternates: {
+    canonical: `${siteConfig.url}/privacy`,
+  },
+  openGraph: {
+    title: "Privacy Policy | 2248 Linko",
+    description:
+      "Learn how 2248 Linko collects, uses, and protects your data — GDPR, CCPA, and COPPA compliant.",
+    url: `${siteConfig.url}/privacy`,
+    type: "website",
+  },
 };
 
 export default function PrivacyPolicy() {
@@ -19,10 +38,11 @@ export default function PrivacyPolicy() {
       }}
     >
       {/* ── Navigation ── */}
-      <nav className="glass-nav w-full px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+      <nav className="glass-nav w-full px-6 py-4 flex justify-between items-center sticky top-0 z-50" aria-label="Main navigation">
         <Link
           href="/"
           className="flex items-center gap-2 hover:scale-105 transition-transform"
+          aria-label="2248 Linko home"
         >
           <span className="text-2xl font-black text-amber-500">2248</span>
           <span className="text-xl font-bold text-amber-800">Linko</span>
@@ -31,6 +51,7 @@ export default function PrivacyPolicy() {
           <Link
             href="/privacy"
             className="text-amber-700 font-semibold border-b-2 border-amber-500 pb-0.5"
+            aria-current="page"
           >
             Privacy
           </Link>
@@ -120,8 +141,8 @@ export default function PrivacyPolicy() {
               <strong className="text-amber-900 font-semibold">
                 Device Identifiers:
               </strong>{" "}
-              We collect Advertising Identifiers (such as Apple's IDFA or
-              Google's Advertising ID) to facilitate advertising and attribution.
+              We collect Advertising Identifiers (such as Apple&apos;s IDFA or
+              Google&apos;s Advertising ID) to facilitate advertising and attribution.
             </p>
 
             <h3 className="text-lg font-semibold text-amber-800 mb-3 mt-7">
@@ -336,9 +357,9 @@ export default function PrivacyPolicy() {
               </li>
               <li>
                 <strong className="text-amber-900 font-semibold">
-                  Right to Opt-Out of "Sharing" or "Selling":
+                  Right to Opt-Out of &ldquo;Sharing&rdquo; or &ldquo;Selling&rdquo;:
                 </strong>{" "}
-                Under CCPA and OCPA, we "share" Advertising Identifiers for
+                Under CCPA and OCPA, we &ldquo;share&rdquo; Advertising Identifiers for
                 cross-contextual behavioral advertising. You have the right to
                 opt-out of this sharing.
               </li>
@@ -365,7 +386,7 @@ export default function PrivacyPolicy() {
           {/* Section 6 */}
           <section>
             <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
-              6. Children's Privacy (COPPA Compliance)
+              6. Children&apos;s Privacy (COPPA Compliance)
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-4">
               Our game is not directed at children under the age of 13 (or 16 in
@@ -450,7 +471,7 @@ export default function PrivacyPolicy() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="w-full px-6 py-8 border-t border-amber-200/50 text-center text-amber-700/55 text-sm">
+      <footer className="w-full px-6 py-8 border-t border-amber-200/50 text-center text-amber-700/55 text-sm" aria-label="Site footer">
         <p>&copy; 2026 2248 Linko. All rights reserved.</p>
       </footer>
     </div>

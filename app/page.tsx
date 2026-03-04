@@ -23,7 +23,7 @@ export default function Home() {
       }}
     >
       {/* ── Navigation ── */}
-      <nav className="glass-nav w-full px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+      <nav className="glass-nav w-full px-6 py-4 flex justify-between items-center sticky top-0 z-50" aria-label="Main navigation">
         <Link
           href="/"
           className="flex items-center gap-2 hover:scale-105 transition-transform"
@@ -34,20 +34,22 @@ export default function Home() {
         </Link>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/privacy"
-            className="text-amber-700/80 hover:text-amber-900 font-medium transition-colors"
-          >
-            Privacy
-          </Link>
-          <Link
-            href="/support"
-            className="text-amber-700/80 hover:text-amber-900 font-medium transition-colors"
-          >
-            Support
-          </Link>
-        </div>
+          <div className="hidden md:flex items-center gap-6" role="list">
+            <Link
+              href="/privacy"
+              className="text-amber-700/80 hover:text-amber-900 font-medium transition-colors"
+              role="listitem"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/support"
+              className="text-amber-700/80 hover:text-amber-900 font-medium transition-colors"
+              role="listitem"
+            >
+              Support
+            </Link>
+          </div>
 
         {/* Mobile hamburger */}
         <button
@@ -225,6 +227,7 @@ export default function Home() {
                   href="https://apps.apple.com/app/YOUR_APP_ID_HERE"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Download 2248 Linko on the App Store"
                   className="glass-button-primary flex items-center justify-center gap-3 px-8 py-4 min-h-[64px] hover:scale-105 active:scale-100 transition-transform duration-300 touch-manipulation"
                 >
                   <svg
@@ -250,6 +253,7 @@ export default function Home() {
                   href="https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME_HERE"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Get 2248 Linko on Google Play"
                   className="glass-button-secondary flex items-center justify-center gap-3 px-8 py-4 min-h-[64px] hover:scale-105 active:scale-100 transition-transform duration-300 touch-manipulation"
                 >
                   <svg
@@ -332,9 +336,9 @@ export default function Home() {
       </main>
 
       {/* ── Footer ── */}
-      <footer className="w-full px-6 py-8 border-t border-amber-200/50 text-center text-amber-700/55 text-sm">
+      <footer className="w-full px-6 py-8 border-t border-amber-200/50 text-center text-amber-700/55 text-sm" aria-label="Site footer">
         <p>&copy; 2026 2248 Linko. All rights reserved.</p>
-        <div className="flex gap-6 justify-center mt-4">
+        <nav className="flex gap-6 justify-center mt-4" aria-label="Footer navigation">
           <Link
             href="/privacy"
             className="hover:text-amber-800 transition-colors"
@@ -347,7 +351,7 @@ export default function Home() {
           >
             Support
           </Link>
-        </div>
+        </nav>
       </footer>
     </div>
   );
