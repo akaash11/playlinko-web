@@ -1,7 +1,13 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
 
 export async function POST(request: Request) {
   try {
@@ -22,9 +28,9 @@ export async function POST(request: Request) {
       other: "Other",
     };
 
-    const { error } = await resend.emails.send({
-      from: "2248 Linko Support <support@playlinko.com>",
-      to: process.env.SUPPORT_EMAIL!,
+    await transporter.sendMail({
+      from: `"2248 Linko Support" <${process.env.GMAIL_USER}>`,
+      to: process.env.SUPPORT_EMAIL,
       replyTo: email,
       subject: `[Support] ${subjectLabels[subject] ?? subject} — from ${name}`,
       html: `
@@ -61,19 +67,11 @@ export async function POST(request: Request) {
       `,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json(
-        { error: "Failed to send message. Please try again." },
-        { status: 500 }
-      );
-    }
-
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error("Contact API error:", err);
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: "Failed to send message. Please try again." },
       { status: 500 }
     );
   }
