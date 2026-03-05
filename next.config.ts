@@ -1,8 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // .browserslistrc is automatically picked up by the SWC compiler
-  // to eliminate legacy polyfills for modern browser targets.
+  images: {
+    // Add intermediate sizes so the mascot (288px mobile / 352px desktop)
+    // is served at a close match instead of jumping straight to 640px.
+    deviceSizes: [320, 384, 420, 512, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  },
 };
 
 export default nextConfig;

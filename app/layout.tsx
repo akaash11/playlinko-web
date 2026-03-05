@@ -142,13 +142,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Preload the LCP image so the browser discovers it from raw HTML */}
-        <link
-          rel="preload"
-          as="image"
-          href="/shiba_happy.png"
-          fetchPriority="high"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
