@@ -20,11 +20,37 @@ export default function SupportContent() {
     subject: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for contacting us! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMsg(data.error ?? "Something went wrong. Please try again.");
+        setSubmitStatus("error");
+      } else {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }
+    } catch {
+      setErrorMsg("Network error. Please check your connection and try again.");
+      setSubmitStatus("error");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -197,13 +223,42 @@ export default function SupportContent() {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="glass-button-primary w-full py-4 px-8 font-semibold text-base hover:scale-[1.02] active:scale-100 transition-transform duration-300 touch-manipulation"
-                aria-label="Send support message"
-              >
-                Send Message
-              </button>
+              {submitStatus === "error" && (
+                <div className="flex items-start gap-2 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+                  <svg className="w-4 h-4 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  {errorMsg}
+                </div>
+              )}
+
+              {submitStatus === "success" ? (
+                <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-green-50 border border-green-200 text-green-800 text-sm font-medium">
+                  <svg className="w-5 h-5 shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Message sent! We&rsquo;ll get back to you within 24 hours.
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="glass-button-primary w-full py-4 px-8 font-semibold text-base hover:scale-[1.02] active:scale-100 transition-transform duration-300 touch-manipulation disabled:opacity-60 disabled:cursor-not-allowed disabled:scale-100"
+                  aria-label="Send support message"
+                >
+                  {submitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                      </svg>
+                      Sending…
+                    </span>
+                  ) : (
+                    "Send Message"
+                  )}
+                </button>
+              )}
             </form>
           </motion.div>
 
