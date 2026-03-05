@@ -34,18 +34,16 @@ export default function Home() {
         </Link>
 
         {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-6" role="list">
+          <div className="hidden md:flex items-center gap-6">
             <Link
               href="/privacy"
               className="text-amber-700/80 hover:text-amber-900 font-medium transition-colors"
-              role="listitem"
             >
               Privacy
             </Link>
             <Link
               href="/support"
               className="text-amber-700/80 hover:text-amber-900 font-medium transition-colors"
-              role="listitem"
             >
               Support
             </Link>
@@ -65,9 +63,9 @@ export default function Home() {
               className="block w-full h-0.5 bg-amber-700 rounded-full origin-center"
             />
             <motion.span
-              animate={{ opacity: menuOpen ? 0 : 1 }}
+              animate={{ scaleX: menuOpen ? 0 : 1 }}
               transition={{ duration: 0.18 }}
-              className="block w-full h-0.5 bg-amber-700 rounded-full"
+              className="block w-full h-0.5 bg-amber-700 rounded-full origin-center"
             />
             <motion.span
               animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
@@ -143,6 +141,7 @@ export default function Home() {
                     fill
                     className="object-contain mascot-glow p-6"
                     priority
+                    sizes="(max-width: 768px) 288px, 352px"
                   />
                 </div>
 
@@ -298,9 +297,9 @@ export default function Home() {
             <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center mx-auto mb-4">
               <FontAwesomeIcon icon={faSun} className="text-2xl text-amber-500" />
             </div>
-            <h3 className="text-lg font-bold text-amber-800 mb-2">
+            <h2 className="text-lg font-bold text-amber-800 mb-2">
               Warm Light Mode
-            </h3>
+            </h2>
             <p className="text-amber-700/70 text-sm leading-relaxed">
               A beautifully crafted warm amber palette that&apos;s gentle on your
               eyes — even during your longest play sessions.
@@ -311,9 +310,9 @@ export default function Home() {
             <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center mx-auto mb-4">
               <FontAwesomeIcon icon={faInfinity} className="text-2xl text-amber-500" />
             </div>
-            <h3 className="text-lg font-bold text-amber-800 mb-2">
+            <h2 className="text-lg font-bold text-amber-800 mb-2">
               Infinite Merging
-            </h3>
+            </h2>
             <p className="text-amber-700/70 text-sm leading-relaxed">
               Merge numbers from 2248 to Millions, Billions, and beyond. The
               number challenge never stops growing.
@@ -324,9 +323,9 @@ export default function Home() {
             <div className="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center mx-auto mb-4">
               <FontAwesomeIcon icon={faPuzzlePiece} className="text-2xl text-amber-500" />
             </div>
-            <h3 className="text-lg font-bold text-amber-800 mb-2">
+            <h2 className="text-lg font-bold text-amber-800 mb-2">
               Number Puzzle
-            </h3>
+            </h2>
             <p className="text-amber-700/70 text-sm leading-relaxed">
               Strategic, addictive number merging gameplay that challenges and
               rewards players of every skill level.

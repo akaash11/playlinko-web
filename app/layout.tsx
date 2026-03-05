@@ -142,11 +142,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* Preload the LCP image so the browser discovers it from raw HTML */}
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+          rel="preload"
+          as="image"
+          href="/shiba_happy.png"
+          fetchPriority="high"
         />
         <script
           type="application/ld+json"

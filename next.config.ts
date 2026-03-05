@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // .browserslistrc is automatically picked up by the SWC compiler
+  // to eliminate legacy polyfills for modern browser targets.
 };
 
 export default nextConfig;

@@ -1,0 +1,12 @@
+[production]
+chrome >= 87
+firefox >= 78
+safari >= 14
+edge >= 88
+opera >= 74
+samsung >= 14
+
+[development]
+last 1 chrome version
+last 1 firefox version
+last 1 safari version
