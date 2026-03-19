@@ -143,6 +143,16 @@ export default function PrivacyPolicy() {
               chosen username, high scores, and daily streaks. This allows you
               to track progress across sessions.
             </p>
+            <p className="text-amber-900/75 leading-relaxed mb-4">
+              <strong className="text-amber-900 font-semibold">
+                Public Leaderboard:
+              </strong>{" "}
+              2248 Linko features a leaderboard where your username and high
+              score may be visible to other users of the app. By choosing a
+              username, you acknowledge that it will be displayed publicly
+              within the game. You can update or change your username at any
+              time via the game settings.
+            </p>
 
             <h3 className="text-lg font-semibold text-amber-800 mb-3 mt-7">
               B. Automatically Collected Data
