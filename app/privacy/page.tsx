@@ -153,6 +153,19 @@ export default function PrivacyPolicy() {
               within the game. You can update or change your username at any
               time via the game settings.
             </p>
+            <p className="text-amber-900/75 leading-relaxed mb-4">
+              <strong className="text-amber-900 font-semibold">
+                Score Sharing:
+              </strong>{" "}
+              The app includes an optional &ldquo;Share&rdquo; feature that generates a
+              custom graphic containing only your score and a link to the game.
+              This image is created entirely locally on your device and does
+              not contain any personal data, account information, or screenshots
+              of your device or other apps. The image is never uploaded to or
+              stored on our servers — it exists solely on your device and is
+              only shared if you choose to do so via your device&apos;s native
+              share sheet.
+            </p>
 
             <h3 className="text-lg font-semibold text-amber-800 mb-3 mt-7">
               B. Automatically Collected Data
