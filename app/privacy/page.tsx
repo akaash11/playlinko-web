@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
             <strong className="text-amber-800 font-semibold">
               Last Updated:
             </strong>{" "}
-            February 28, 2026
+            March 19, 2026
           </p>
         </div>
 
@@ -101,6 +101,25 @@ export default function PrivacyPolicy() {
               (GDPR), the California Consumer Privacy Act (CCPA/CPRA), and the
               Oregon Consumer Privacy Act (OCPA).
             </p>
+          </section>
+
+          {/* We Do Not Sell callout */}
+          <section>
+            <div className="flex items-start gap-4 bg-amber-50/80 border border-amber-300/60 rounded-2xl px-6 py-5">
+              <span className="text-2xl leading-none mt-0.5" aria-hidden="true">🔒</span>
+              <div>
+                <h2 className="text-lg font-bold text-amber-900 mb-1">
+                  We Do Not Sell Your Personal Data
+                </h2>
+                <p className="text-amber-900/75 leading-relaxed text-sm md:text-base">
+                  We do not sell, rent, or trade your personal information to
+                  third parties for their own marketing or commercial purposes.
+                  Data shared with our service providers (listed in Section 3)
+                  is strictly limited to what is necessary to operate the app
+                  and is governed by data processing agreements.
+                </p>
+              </div>
+            </div>
           </section>
 
           {/* Section 1 */}
@@ -135,7 +154,9 @@ export default function PrivacyPolicy() {
               We use PostHog to collect data on how you interact with the game.
               This includes gameplay events (e.g., levels completed), UI
               interactions, and session recordings to help us identify bugs and
-              improve game design.
+              improve game design. Session recording is used strictly for
+              analyzing gameplay patterns and does not capture sensitive user
+              information or activity outside the app.
             </p>
             <p className="text-amber-900/75 leading-relaxed mb-4">
               <strong className="text-amber-900 font-semibold">
@@ -143,6 +164,16 @@ export default function PrivacyPolicy() {
               </strong>{" "}
               We collect Advertising Identifiers (such as Apple&apos;s IDFA or
               Google&apos;s Advertising ID) to facilitate advertising and attribution.
+            </p>
+            <p className="text-amber-900/75 leading-relaxed mb-4">
+              <strong className="text-amber-900 font-semibold">
+                Diagnostics and Performance:
+              </strong>{" "}
+              We use Sentry to collect crash reports and performance data to help
+              identify and fix bugs. This may include information such as the
+              device OS, device model, and stack traces at the time of a crash.
+              This data is non-identifiable and used strictly for app stability
+              and reliability.
             </p>
 
             <h3 className="text-lg font-semibold text-amber-800 mb-3 mt-7">
@@ -233,31 +264,48 @@ export default function PrivacyPolicy() {
                       provider: "Supabase",
                       purpose: "Backend & Database",
                       data: "User ID, Username, Game Progress",
+                      link: "https://supabase.com/privacy",
                     },
                     {
                       provider: "PostHog",
                       purpose: "Product Analytics",
                       data: "Analytics Data, Session Recordings",
+                      link: "https://posthog.com/privacy",
                       alt: true,
                     },
                     {
                       provider: "Google AdMob",
                       purpose: "Advertising",
                       data: "Advertising Identifiers, Device Info",
+                      link: "https://policies.google.com/privacy",
                     },
                     {
                       provider: "RevenueCat",
                       purpose: "Subscription Management",
                       data: "Purchase Receipts, Transaction IDs",
+                      link: "https://www.revenuecat.com/privacy",
                       alt: true,
                     },
-                  ].map(({ provider, purpose, data, alt }) => (
+                    {
+                      provider: "Sentry.io",
+                      purpose: "Error Reporting & Performance Monitoring",
+                      data: "Crash logs, device information (OS, model), and diagnostics data",
+                      link: "https://sentry.io/privacy/",
+                    },
+                  ].map(({ provider, purpose, data, link, alt }) => (
                     <tr
                       key={provider}
                       className={alt ? "bg-amber-50/60" : ""}
                     >
                       <td className="border border-amber-200 px-4 py-3 font-semibold text-amber-900">
-                        {provider}
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-amber-700 hover:text-amber-900 underline underline-offset-2 transition-colors"
+                        >
+                          {provider}
+                        </a>
                       </td>
                       <td className="border border-amber-200 px-4 py-3">
                         {purpose}
@@ -333,8 +381,8 @@ export default function PrivacyPolicy() {
                 <strong className="text-amber-900 font-semibold">
                   Right to Deletion:
                 </strong>{" "}
-                You may request that we delete your account and all associated
-                gameplay data. To do so, email{" "}
+                You may request that we delete all personal and gameplay data
+                associated with your account. To do so, email{" "}
                 <a
                   href="mailto:privacy@playlinko.com"
                   className="text-amber-600 hover:text-amber-800 underline underline-offset-2 transition-colors"
@@ -346,7 +394,8 @@ export default function PrivacyPolicy() {
                   &ldquo;Account Deletion Request&rdquo;
                 </strong>{" "}
                 and include your in-game username. We will process your request
-                within 30 days.
+                and permanently delete all personal and gameplay data within 30
+                days.
               </li>
               <li>
                 <strong className="text-amber-900 font-semibold">
@@ -413,14 +462,46 @@ export default function PrivacyPolicy() {
               account is active. If you are inactive for more than 24 months, we
               reserve the right to anonymize or delete your data. We use
               industry-standard encryption provided by our technical stack
-              (Supabase/PostHog) to protect your information.
+              (Supabase, PostHog, and Sentry.io) to protect your information.
+              Diagnostic and crash data collected by Sentry is retained only as
+              long as necessary to identify and resolve stability issues and is
+              then purged.
             </p>
           </section>
 
-          {/* Section 8 */}
+          {/* Section 8 — Global Data Transfers */}
           <section>
             <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
-              8. Contact Us
+              8. Global Data Transfers
+            </h2>
+            <p className="text-amber-900/75 leading-relaxed mb-4">
+              2248 Linko is operated from the United States, and our third-party
+              service providers (Supabase, PostHog, Google AdMob, RevenueCat,
+              and Sentry.io) store and process data on servers located primarily
+              in the United States.
+            </p>
+            <p className="text-amber-900/75 leading-relaxed mb-4">
+              If you are located in the European Economic Area (EEA), United
+              Kingdom, or Switzerland, please be aware that your personal data
+              will be transferred to and processed in a country whose data
+              protection laws may differ from those in your jurisdiction.
+            </p>
+            <p className="text-amber-900/75 leading-relaxed">
+              We ensure that such transfers comply with applicable law by
+              relying on the European Commission&apos;s{" "}
+              <strong className="text-amber-900 font-semibold">
+                Standard Contractual Clauses (SCCs)
+              </strong>{" "}
+              and other approved transfer mechanisms where required. Each of
+              our service providers maintains data processing agreements that
+              include appropriate safeguards for international transfers.
+            </p>
+          </section>
+
+          {/* Section 9 */}
+          <section>
+            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+              9. Contact Us
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-4">
               If you have questions about this policy or our privacy practices,
