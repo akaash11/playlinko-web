@@ -105,7 +105,7 @@ export default function PrivacyPolicy() {
 
           {/* We Do Not Sell callout */}
           <section>
-            <div className="flex items-start gap-4 bg-amber-50/80 border border-amber-300/60 rounded-2xl px-6 py-5">
+            <div id="no-selling" className="flex items-start gap-4 bg-amber-50/80 border border-amber-300/60 rounded-2xl px-6 py-5">
               <span className="text-2xl leading-none mt-0.5" aria-hidden="true">🔒</span>
               <div>
                 <h2 className="text-lg font-bold text-amber-900 mb-1">
@@ -124,7 +124,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 1 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="data-collection" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               1. Data We Collect
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-6">
@@ -192,7 +192,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 2 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="device-info" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               2. Mobile Device &amp; Technical Information
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-6">
@@ -234,7 +234,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 3 — Third-party table */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="third-parties" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               3. Third-Party Service Providers
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-6">
@@ -322,7 +322,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 4 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="advertising" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               4. Advertising and Opt-Outs
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-4">
@@ -363,7 +363,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 5 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="privacy-rights" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               5. Your Global Privacy Rights
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-5">
@@ -377,25 +377,13 @@ export default function PrivacyPolicy() {
                 </strong>{" "}
                 You may request a copy of the personal data we hold about you.
               </li>
-              <li>
+              <li id="deletion">
                 <strong className="text-amber-900 font-semibold">
                   Right to Deletion:
                 </strong>{" "}
                 You may request that we delete all personal and gameplay data
-                associated with your account. To do so, email{" "}
-                <a
-                  href="mailto:privacy@playlinko.com"
-                  className="text-amber-600 hover:text-amber-800 underline underline-offset-2 transition-colors"
-                >
-                  privacy@playlinko.com
-                </a>{" "}
-                with the subject line{" "}
-                <strong className="text-amber-900 font-medium">
-                  &ldquo;Account Deletion Request&rdquo;
-                </strong>{" "}
-                and include your in-game username. We will process your request
-                and permanently delete all personal and gameplay data within 30
-                days.
+                associated with your account. See the detailed deletion
+                instructions below.
               </li>
               <li>
                 <strong className="text-amber-900 font-semibold">
@@ -413,6 +401,67 @@ export default function PrivacyPolicy() {
                 opt-out of this sharing.
               </li>
             </ul>
+            {/* Deletion callout — anchor target for Google Play Data Safety URL */}
+            <div className="mt-8 bg-red-50/70 border border-red-200/70 rounded-2xl px-6 py-6 space-y-4">
+              <h3 className="text-base font-bold text-red-900">
+                How to Request Data Deletion — 2248 Linko
+              </h3>
+              <p className="text-red-900/75 leading-relaxed text-sm md:text-base">
+                To request the deletion of your 2248 Linko account and all
+                associated data, follow these steps:
+              </p>
+              <ol className="list-decimal list-inside text-red-900/75 leading-relaxed space-y-2 text-sm md:text-base ml-1">
+                <li>
+                  Email{" "}
+                  <a
+                    href="mailto:privacy@playlinko.com"
+                    className="text-red-700 hover:text-red-900 underline underline-offset-2 transition-colors font-medium"
+                  >
+                    privacy@playlinko.com
+                  </a>{" "}
+                  from any email address.
+                </li>
+                <li>
+                  Use the subject line{" "}
+                  <strong className="text-red-900 font-semibold">
+                    &ldquo;Account Deletion Request&rdquo;
+                  </strong>
+                  .
+                </li>
+                <li>
+                  Include your in-game username in the body of the email.
+                </li>
+              </ol>
+              <div className="border-t border-red-200/60 pt-4 space-y-2 text-sm text-red-900/70 leading-relaxed">
+                <p>
+                  <strong className="text-red-900 font-semibold">
+                    Data deleted:
+                  </strong>{" "}
+                  All personal and gameplay data — including your User ID,
+                  username, high scores, daily streaks, and purchase history.
+                </p>
+                <p>
+                  <strong className="text-red-900 font-semibold">
+                    Data retained:
+                  </strong>{" "}
+                  Anonymized, non-identifiable diagnostic logs (crash reports
+                  via Sentry) may be retained for up to 90 days for app
+                  stability purposes before being purged.
+                </p>
+                <p>
+                  <strong className="text-red-900 font-semibold">
+                    Retention period:
+                  </strong>{" "}
+                  We will process your request and permanently delete all
+                  personal and gameplay data within{" "}
+                  <strong className="text-red-900 font-semibold">
+                    30 days
+                  </strong>
+                  .
+                </p>
+              </div>
+            </div>
+
             <p className="text-amber-900/75 leading-relaxed mt-5">
               To exercise these rights, please contact us at{" "}
               <a
@@ -434,7 +483,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 6 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="childrens-privacy" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               6. Children&apos;s Privacy (COPPA Compliance)
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-4">
@@ -454,7 +503,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 7 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="data-retention" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               7. Data Retention and Security
             </h2>
             <p className="text-amber-900/75 leading-relaxed">
@@ -471,7 +520,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 8 — Global Data Transfers */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="data-transfers" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               8. Global Data Transfers
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-4">
@@ -500,7 +549,7 @@ export default function PrivacyPolicy() {
 
           {/* Section 9 */}
           <section>
-            <h2 className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
+            <h2 id="contact" className="text-2xl font-bold text-amber-700 mb-5 pb-2 border-b border-amber-200/60">
               9. Contact Us
             </h2>
             <p className="text-amber-900/75 leading-relaxed mb-4">
