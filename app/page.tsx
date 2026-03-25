@@ -223,7 +223,7 @@ export default function Home() {
               >
                 {/* App Store */}
                 <a
-                  href="https://apps.apple.com/app/YOUR_APP_ID_HERE"
+                  href="https://apps.apple.com/app/id6760681337"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Download 2248 Linko on the App Store"
@@ -249,7 +249,7 @@ export default function Home() {
 
                 {/* Google Play */}
                 <a
-                  href="https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME_HERE"
+                  href="https://play.google.com/store/apps/details?id=com.playlinko.mergegame"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Get 2248 Linko on Google Play"

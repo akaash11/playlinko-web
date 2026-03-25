@@ -45,9 +45,9 @@ export const siteConfig = {
     privacy: 'privacy@playlinko.com',
   },
   app: {
-    ios: 'https://apps.apple.com/app/YOUR_APP_ID_HERE',
-    android: 'https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME_HERE',
-    bundleId: 'com.playlinko.app',
+    ios: 'https://apps.apple.com/app/id6760681337',
+    android: 'https://play.google.com/store/apps/details?id=com.playlinko.mergegame',
+    bundleId: 'com.playlinko.mergegame',
   },
 } as const;
 

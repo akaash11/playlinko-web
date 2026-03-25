@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    "apple-itunes-app": `app-id=YOUR_APP_ID_HERE`,
+    "apple-itunes-app": `app-id=6760681337`,
     "google-play-app": `app-id=${siteConfig.app.bundleId}`,
   },
 };
