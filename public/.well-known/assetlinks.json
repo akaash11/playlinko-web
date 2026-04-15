@@ -1,13 +1,15 @@
 [
   {
     "relation": [
-      "delegate_permission/common.handle_all_urls"
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
     ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.playlinko.mergegame",
       "sha256_cert_fingerprints": [
-        "B248F18E1B3C80590E3671F58CE733DB3D5A602E8B7E23F96BAD62C8CE95D7EF"
+        "B248F18E1B3C80590E3671F58CE733DB3D5A602E8B7E23F96BAD62C8CE95D7EF",
+        "B8:59:7B:59:A8:CA:FB:19:53:E9:78:03:32:FF:3E:07:64:0D:EF:3C:AA:2E:E2:09:49:59:43:3C:FE:A8:C4:BA"
       ]
     }
   }
