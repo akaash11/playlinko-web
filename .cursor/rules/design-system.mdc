@@ -1,0 +1,115 @@
+---
+description: Design system rules for playlinko-web — text contrast, dark mode, and the warm amber glass theme. Apply whenever editing app/globals.css, app/page.tsx, or any component that renders visible text.
+globs:
+  - "app/**/*.tsx"
+  - "app/**/*.css"
+alwaysApply: true
+---
+
+# Playlinko Web — Design System Rules
+
+Adapted from the production game's design standards (linko-prism/SKILL.md §7).
+
+---
+
+## 1. Warm Amber Glass Theme — Token Reference
+
+| Token | Light Mode | Dark Mode |
+|---|---|---|
+| Background gradient | `#FFFBEB → #FEF3C7 → #FDE68A` | `#0F0700 → #1C0E02 → #2A1500` |
+| Primary accent | `#F59E0B` (amber-500) | same — glows brighter |
+| Heading text | `#78350F` (amber-900) | `#FDE68A` (amber-200) |
+| Body text | `#B45309` (amber-700) | `#FCD34D` (amber-300) |
+| Muted / metadata | `#D97706` (amber-600) at 50–70% | `rgba(252,211,77,0.70)` |
+| Glass card bg | `rgba(255,255,255,0.58)` | `rgba(45,25,5,0.72)` |
+| Glass nav bg | `rgba(255,251,235,0.82)` | `rgba(15,7,0,0.90)` |
+
+---
+
+## 2. Text Contrast — Hard Rules
+
+**Every text element must meet WCAG AA (≥ 4.5:1 contrast) against its background in BOTH light and dark modes.**
+
+### Minimum colours per surface
+
+| Surface | Light mode min | Dark mode min |
+|---|---|---|
+| Glass card (`rgba(255,255,255,0.58)`) | `text-amber-700` (#B45309) | `#FCD34D` (amber-300) |
+| Glass nav (`rgba(255,251,235,0.82)`) | `text-amber-700` | `#FDE68A` (amber-200) |
+| Dark body background | — | `#FDE68A` (amber-200) |
+| Amber CTA buttons (primary) | white (`#ffffff`) | white (`#ffffff`) |
+
+### Approved colour pairs (tested)
+
+| Text | Background | Contrast ratio | Use for |
+|---|---|---|---|
+| `#78350F` amber-900 | white card | 8.1:1 ✓ | Headings, names |
+| `#92400E` amber-800 | white card | 6.3:1 ✓ | Sub-headings |
+| `#B45309` amber-700 | white card | 4.7:1 ✓ | Body copy |
+| `#FDE68A` amber-200 | `#2D1905` dark card | 9.1:1 ✓ | Headings in dark |
+| `#FCD34D` amber-300 | `#2D1905` dark card | 7.4:1 ✓ | Body in dark |
+| `rgba(252,211,77,0.70)` | `#2D1905` dark card | ~5.2:1 ✓ | Muted/metadata in dark |
+
+---
+
+## 3. Dark Mode — Class-Based Only (Critical)
+
+This project uses **class-based dark mode** (`html.dark`) — NOT Tailwind's `dark:` prefix.
+
+### Why `dark:` prefix is forbidden
+
+Tailwind v4 `dark:` variants use `@media (prefers-color-scheme: dark)` by default. Our backgrounds are controlled by the `html.dark` CSS class (set by the toggle button). Mixing both causes:
+- Light background (class not set) + dark text (system media query fires) = invisible text on light card
+- Exact scenario: OS is dark mode, user hasn't toggled site → `dark:text-amber-100` (cream) on cream card
+
+### Rules
+
+- **NEVER** use `dark:` Tailwind prefix in any JSX/TSX (`dark:text-*`, `dark:bg-*`, etc.)
+- **ALWAYS** add dark mode overrides in `app/globals.css` under `html.dark .class-name { }`
+- All text colour dark-mode overrides live in the `/* Dark mode text helpers */` section of `globals.css`
+- When adding a new text colour class, add its `html.dark` override immediately
+
+### Correct pattern
+
+```tsx
+// ✅ Correct — class-based only
+<p className="text-amber-900">Reviewer Name</p>
+
+// ❌ Wrong — dark: prefix conflicts with our toggle
+<p className="text-amber-900 dark:text-amber-100">Reviewer Name</p>
+```
+
+```css
+/* globals.css — add override here */
+html.dark .text-amber-900 {
+  color: #FDE68A; /* 9.1:1 contrast on dark card */
+}
+```
+
+---
+
+## 4. Glassmorphism — Required Properties
+
+Every `.glass-*` utility must use CSS variables so both modes are covered:
+
+```css
+.glass-card {
+  background: var(--glass-card-bg);      /* swaps via html.dark */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--glass-card-border);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+```
+
+Never hardcode `rgba(255,255,255,…)` in glass utilities — use the CSS variables defined in `:root` / `html.dark`.
+
+---
+
+## 5. Checklist When Adding New UI
+
+- [ ] Text colour meets ≥ 4.5:1 in **light mode** against the card/background
+- [ ] Corresponding `html.dark` override exists in `globals.css` with ≥ 4.5:1 on dark surface
+- [ ] No `dark:` Tailwind prefix used anywhere in the component
+- [ ] Any new CSS glass utility uses CSS variables (not hardcoded colours)
+- [ ] Muted / metadata text meets ≥ 4.5:1 even at reduced opacity
