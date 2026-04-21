@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
@@ -58,7 +60,17 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     creator: siteConfig.social.twitter,
     site: siteConfig.social.twitter,
-    images: [siteConfig.ogImage],
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "2248 Linko — Number Puzzle & Merge Game",
+      },
+    ],
+  },
+  verification: {
+    google: "YOUR_GSC_VERIFICATION_TOKEN",
   },
   robots: {
     index: true,
@@ -134,6 +146,11 @@ export default function RootLayout({
           "@type": "ImageObject",
           url: `${siteConfig.url}/icon.svg`,
         },
+        sameAs: [
+          siteConfig.app.ios,
+          siteConfig.app.android,
+          `https://twitter.com/${siteConfig.social.twitter.replace("@", "")}`,
+        ],
         contactPoint: {
           "@type": "ContactPoint",
           email: siteConfig.contact.support,
@@ -158,7 +175,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased`}>
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

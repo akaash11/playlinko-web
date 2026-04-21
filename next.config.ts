@@ -6,6 +6,10 @@ const nextConfig: NextConfig = {
     // is served at a close match instead of jumping straight to 640px.
     deviceSizes: [320, 384, 420, 512, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
   },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

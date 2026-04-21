@@ -500,7 +500,7 @@ export default function Home() {
           className="mt-16 w-full max-w-3xl"
         >
           <div className="glass-card px-6 py-4 flex flex-col sm:flex-row items-center justify-around gap-4 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-amber-200/40">
-            <div className="flex items-center gap-2.5 py-1">
+            <div className="flex items-center gap-2.5 py-1 sm:px-8">
               <div className="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <FontAwesomeIcon key={i} icon={faStar} className="text-amber-500 text-sm" />
@@ -512,7 +512,7 @@ export default function Home() {
               <FontAwesomeIcon icon={faPuzzlePiece} className="text-amber-500 text-lg" />
               <span className="text-amber-800 font-semibold text-sm">All Age Groups</span>
             </div>
-            <div className="flex items-center gap-2.5 py-1">
+            <div className="flex items-center gap-2.5 py-1 sm:px-8">
               <FontAwesomeIcon icon={faInfinity} className="text-amber-500 text-lg" />
               <span className="text-amber-800 font-semibold text-sm">Infinite Merging</span>
             </div>
